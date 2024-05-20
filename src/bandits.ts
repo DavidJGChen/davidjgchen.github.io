@@ -35,6 +35,8 @@ svg.append("g")
 
 // Append the SVG element.
 const container = d3.select("#container");
-container.append(() => svg);
 console.log(container);
+console.log(svg);
 console.log("wahoo!!!");
+container.append(() => svg.node());
+console.log("wahoo 2!!!");
