@@ -64,8 +64,8 @@ let new_instance = true;
 let bandits: Bandits = new BernoulliBandits();
 
 let tempConfig : EpsilonGreedyConfig = { // THIS IS TEMPORARY
-    epsilon: 0.1,
-    numSimultaenous: 100,
+    epsilon: 0.01,
+    numSimultaenous: 1000,
 }
 
 // Make this into an array
@@ -84,8 +84,8 @@ function step() {
         reset();
         new_instance = false;
     }
+    algorithmInstance.step(iter);
     iter += 1;
-    algorithmInstance.step();
     updateUI();
 }
 
@@ -95,6 +95,9 @@ let countRow = d3.select("#count-row").selectChildren("td");
 let iterationText = d3.select("#iterations");
 let totalRegretText = d3.select("#total-regret");
 let avgRegretText = d3.select("#avg-regret");
+let estMeansMeanStdRow = d3.select("#est-means-mean-std-row").selectChildren("td");
+let countMeanStdRow = d3.select("#count-mean-std-row").selectChildren("td");
+
 
 let f = d3.format(".3f");
 
@@ -106,24 +109,20 @@ function updateUI() {
     estMeansRow.text((_,i) => {
         let strList = [];
         for (let j = 0; j < maxDisplay; ++j) {
-            strList.push(f(algorithmInstance.estMeans[j][i]));
+            strList.push(f(algorithmInstance.estMeans[i][j]));
         }
         return strList.join(", ");
     });
     countRow.text((_,i) => {
         let strList = [];
         for (let j = 0; j < maxDisplay; ++j) {
-            strList.push(algorithmInstance.counts[j][i]);
+            strList.push(algorithmInstance.counts[i][j]);
         }
         return strList.join(", ");
     });
     iterationText.text(iter);
     totalRegretText.text(() => {
-        let strList = [];
-        for (let j = 0; j < maxDisplay; ++j) {
-            strList.push(f(algorithmInstance.totalRegrets[j]));
-        }
-        return strList.join(", ");
+        return f(d3.mean(algorithmInstance.totalRegrets)) + ", " + f(d3.deviation(algorithmInstance.totalRegrets));
     });
 
     let strList = [];
@@ -134,7 +133,21 @@ function updateUI() {
             strList.push(f(algorithmInstance.totalRegrets[j] / iter));
         }
     }
-    avgRegretText.text(strList.join(", "));
+    avgRegretText.text(() => {
+        if (iter == 0) {
+            return "0, 0";
+        } else {
+            return f(d3.mean(algorithmInstance.totalRegrets) / iter) + ", " + f(d3.deviation(algorithmInstance.totalRegrets.map(r => r / iter)))
+        }
+    });
+
+    estMeansMeanStdRow.text((_,i) => {
+        return f(d3.mean(algorithmInstance.estMeans[i])) + ", " + f(d3.deviation(algorithmInstance.estMeans[i]));
+    });
+
+    countMeanStdRow.text((_,i) => {
+        return f(d3.mean(algorithmInstance.counts[i])) + ", " + f(d3.deviation(algorithmInstance.counts[i]));
+    });
 }
 
 reset();
