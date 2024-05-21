@@ -65,7 +65,7 @@ let bandits: Bandits = new BernoulliBandits();
 
 let tempConfig : EpsilonGreedyConfig = { // THIS IS TEMPORARY
     epsilon: 0.1,
-    numSimultaenous: 3,
+    numSimultaenous: 100,
 }
 
 // Make this into an array
@@ -98,34 +98,43 @@ let avgRegretText = d3.select("#avg-regret");
 
 let f = d3.format(".3f");
 
+// Refactor this and get rid of it
 function updateUI() {
+    let maxDisplay = Math.min(algorithmInstance.numSimultaenous, 8);
     // This is not the correct way to update UI.
     trueMeansRow.text((_,i) => f(bandits.means[i]));
     estMeansRow.text((_,i) => {
         let strList = [];
-        for (let j = 0; j < algorithmInstance.numSimultaenous; ++j) {
+        for (let j = 0; j < maxDisplay; ++j) {
             strList.push(f(algorithmInstance.estMeans[j][i]));
         }
         return strList.join(", ");
     });
     countRow.text((_,i) => {
         let strList = [];
-        for (let j = 0; j < algorithmInstance.numSimultaenous; ++j) {
+        for (let j = 0; j < maxDisplay; ++j) {
             strList.push(algorithmInstance.counts[j][i]);
         }
         return strList.join(", ");
     });
     iterationText.text(iter);
-    totalRegretText.text(() => {let strList = [];
-        for (let j = 0; j < algorithmInstance.numSimultaenous; ++j) {
+    totalRegretText.text(() => {
+        let strList = [];
+        for (let j = 0; j < maxDisplay; ++j) {
             strList.push(f(algorithmInstance.totalRegrets[j]));
         }
-        return strList.join(", ")});
-    if (iter == 0) {
-        avgRegretText.text(0);
-    } else {
-        avgRegretText.text(f(algorithmInstance.totalRegrets[0] / iter));
+        return strList.join(", ");
+    });
+
+    let strList = [];
+    for (let j = 0; j < maxDisplay; ++j) {
+        if (iter == 0) {
+            strList.push(0);
+        } else {
+            strList.push(f(algorithmInstance.totalRegrets[j] / iter));
+        }
     }
+    avgRegretText.text(strList.join(", "));
 }
 
 reset();
