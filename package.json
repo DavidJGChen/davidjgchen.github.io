@@ -5,8 +5,8 @@
     "load-fonts": "cp node_modules/beercss/dist/cdn/material-symbols*.woff2 .",
     "build-css": "concat node_modules/beercss/dist/cdn/beer.min.css styles.css > bundle.css",
     "watch-css": "concat node_modules/beercss/dist/cdn/beer.min.css styles.css -o bundle.css",
-    "build-js": "browserify src/bandits.ts -p [tsify] | uglifyjs -c > bundle.js",
-    "watch-js": "watchify src/bandits.ts -p [tsify] -v --debug -o bundle.js",
+    "build-js": "browserify src/playground.ts -p [tsify] | uglifyjs -c > bundle.js",
+    "watch-js": "watchify src/playground.ts -p [tsify] -v --debug -o bundle.js",
     "build": "npm run prep && npm run load-fonts && npm run build-js && npm run build-css",
     "watch": "npm run prep && npm run load-fonts && concurrently \"npm run watch-js\" \"npm run watch-css\"",
     "serve-watch": "concurrently \"serve\" \"npm run watch\""
