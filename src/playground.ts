@@ -64,8 +64,8 @@ let new_instance = true;
 let bandits: Bandits = new BernoulliBandits();
 
 let tempConfig : EpsilonGreedyConfig = { // THIS IS TEMPORARY
-    epsilon: 0.01,
-    numSimultaenous: 1000,
+    epsilon: 0.25,
+    numSimultaenous: 1,
 }
 
 // Make this into an array
@@ -101,6 +101,45 @@ let countMeanStdRow = d3.select("#count-mean-std-row").selectChildren("td");
 
 let f = d3.format(".3f");
 
+// This is also temporary!
+
+let lineGlobal = null;
+
+let meanLineGlobal = null;
+
+const width = 400;
+const height = 600;
+
+function createLine() {
+
+    lineGlobal = d3.select("#container")
+        .append("svg")
+            .attr("width", width)
+            .attr("height", height);
+
+    lineGlobal.append("line")
+        .attr("y1", 0)
+        .attr("y2", height)
+        .attr("x1", width / 2)
+        .attr("x2", width / 2)
+        .style("stroke", "white");
+    
+    meanLineGlobal = lineGlobal.append("line")
+        .style("stroke", "white")
+        .attr("x1", width / 2 - 40)
+        .attr("x2", width / 2 + 40)
+}
+
+function updateLine(mean: number) {
+    meanLineGlobal
+        .datum(mean)
+        .transition()
+        .attr("y1", (d : number) => (1 - d) * height)
+        .attr("y2", (d : number) => (1 - d) * height);
+}
+
+createLine()
+
 // Refactor this and get rid of it
 function updateUI() {
     let maxDisplay = Math.min(algorithmInstance.numSimultaenous, 8);
@@ -113,6 +152,7 @@ function updateUI() {
         }
         return strList.join(", ");
     });
+    updateLine(algorithmInstance.estMeans[0][0]);
     countRow.text((_,i) => {
         let strList = [];
         for (let j = 0; j < maxDisplay; ++j) {
