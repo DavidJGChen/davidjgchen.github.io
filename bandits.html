@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Bandits!</title>
+    <link rel="stylesheet" href="bundle.css" type="text/css">
+    <script src="lib.js" type="module"></script>
+  </head>
+  <body class="dark">
+    <h2 class="center-align">Bandit simulator</h2>
+    <div class="row center-align">
+      <button class="tertiary" id="play-pause-button" title="Run/Pause">
+        <i>play_arrow</i>
+        <i>pause</i>
+      </button>
+      <button class="tertiary" id="reset-button" title="Reset">
+        <i>replay</i>
+      </button>
+      <article class="small-width border">
+        <h5 class="center-align">Total steps</h5>
+        <h5 class="center-align" id="iterations">0</h5>
+      </article>
+      <article class="small-width border">
+        <h5 class="center-align">Avg. total regret</h5>
+        <h5 class="center-align" id="total-regret">0</h5>
+      </article>
+      <article class="small-width border">
+        <h5 class="center-align">Avg. regret per t</h5>
+        <h5 class="center-align" id="avg-regret">0</h5>
+      </article>
+    </div>
+    <table class="center-align">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Arm 1</th>
+          <th>Arm 2</th>
+          <th>Arm 3</th>
+          <th>Arm 4</th>
+          <th>Arm 5</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="true-means-row">
+          <th>True mean</th>
+          <td>6</td>
+          <td>7</td>
+          <td>8</td>
+          <td>9</td>
+          <td>10</td>
+        </tr>
+        <tr id="est-means-row">
+          <th>Est. mean</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr id="count-row">
+          <th>Count</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr id="est-means-mean-std-row">
+          <th>Est. mean stats</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr id="count-mean-std-row">
+          <th>Count stats</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+    <div id="container"></div>
+    <h5>Ignore this please</h4>
+    <p>Bombastic side-eye</p>
+    <img src="https://www.boredpanda.com/blog/wp-content/uploads/2020/03/corgis-34-5e5d2928b9cc8__700.jpg" alt="corgi side eye">
+    <h5>Man, I just updated this on September 28, 2024!</h5>
+    <script src="bundle.js"></script>
+  </body>
+</html>
