@@ -1,31 +1,28 @@
 {
-  "name": "bandit-prototype",
+  "name": "whole-wavelength",
+  "type": "module",
+  "version": "0.0.1",
   "scripts": {
-    "prep": "cat node_modules/beercss/dist/cdn/beer.min.js > lib.js",
-    "load-fonts": "cp node_modules/beercss/dist/cdn/material-symbols*.woff2 .",
-    "build-css": "concat node_modules/beercss/dist/cdn/beer.min.css styles.css > bundle.css",
-    "watch-css": "concat node_modules/beercss/dist/cdn/beer.min.css styles.css -o bundle.css",
-    "build-js": "browserify src/playground.ts -p [tsify] | uglifyjs -c > bundle.js",
-    "watch-js": "watchify src/playground.ts -p [tsify] -v --debug -o bundle.js",
-    "build": "npm run prep && npm run load-fonts && npm run build-js && npm run build-css",
-    "watch": "npm run prep && npm run load-fonts && concurrently \"npm run watch-js\" \"npm run watch-css\"",
-    "serve-watch": "concurrently \"serve\" \"npm run watch\""
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "dependencies": {
-    "beercss": "^3.5.6",
-    "concat": "^1.0.3",
-    "d3": "^7.9.0"
+    "@astrojs/react": "^4.1.4",
+    "@astrojs/rss": "^4.0.11",
+    "@astrojs/sitemap": "^3.2.1",
+    "@astrojs/tailwind": "^5.1.4",
+    "@types/react": "^19.0.7",
+    "@types/react-dom": "^19.0.3",
+    "astro": "^5.15.9",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwindcss": "^3.4.17",
+    "theme-change": "^2.5.0"
   },
   "devDependencies": {
-    "@types/d3": "^7.4.3",
-    "@types/node": "^20.12.12",
-    "browserify": "^17.0.0",
-    "concurrently": "^8.2.2",
-    "copyfiles": "^2.4.1",
-    "serve": "^14.2.4",
-    "tsify": "^5.0.4",
-    "typescript": "^5.4.5",
-    "uglify-js": "^3.17.4",
-    "watchify": "^4.0.0"
+    "@tailwindcss/typography": "^0.5.16",
+    "daisyui": "^4.12.23"
   }
 }

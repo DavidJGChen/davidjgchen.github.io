@@ -1,0 +1,70 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { profile } from "@/settings";
+import BetterIcon from "@/components/ui/BetterIcon.astro";
+import List from "@/components/ui/List.astro";
+import {RESEARCH_ICONS} from "@/data/researchIcons";
+
+const { research_areas } = profile;
+---
+
+<Layout title="Research | David Chen">
+  <div class="prose max-w-none">
+    <h1 class="text-3xl font-bold mb-8">My Interests</h1>
+
+    <div class="mb-12">
+      <p class="text-lg mb-6">
+        I'm currently broadly interested in decision-making under uncertainty. Previously I've explored projects related to offline RL, as well as multi-armed bandits. I'm most excited to understand and produce theoretical results, and I've recently started exploring online algorithms as well.
+      </p>
+      <p class="text-lg mb-6">
+        In addition to my research interests, I find it incredibly important that I understand the rigorous underlying foundations of my studies at a deep level. As such, I am always passionate about opportunities to learn more about mathematical statistics, measure-theoretic probability, various forms of optimization, and other related mathematics.
+      </p>
+    </div>
+
+    <h2 class="text-2xl font-bold mb-6">Interest Areas</h2>
+    <div class="grid gap-8 mb-12">
+      {
+        research_areas.map((area) => (
+          <div class="flex gap-6 items-start">
+            <BetterIcon>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke-width="2"
+                class="size-6 stroke-accent"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d={RESEARCH_ICONS[area.field as keyof typeof RESEARCH_ICONS]?.path || RESEARCH_ICONS['computer-science'].path}
+                />
+              </svg>
+            </BetterIcon>
+            <div>
+              <h3 class="text-xl font-semibold mb-2">{area.title}</h3>
+              <p class="text-base">{area.description}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- <List listTitle="Selected Projects" listItems={[
+      {
+        title: "Evaluating Stitching Capabilities of RvS Transformer Algorithms",
+        description: ""
+      },
+      {
+        title: "Exploring Bandit Algorithms",
+        description: ""
+      }
+    ]} /> -->
+
+    <!-- TODO: add to this section -->
+    <!-- <h2 class="text-2xl font-bold mb-6">Research Impact</h2>
+    <p class="text-lg mb-6">
+      blah blah blah
+    </p> -->
+  </div>
+</Layout>
