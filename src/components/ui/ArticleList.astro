@@ -5,6 +5,8 @@ interface Props {
     title: string;
     journal: string;
     time: string;
+	link?: string;
+	thumbnail?: string;
   }[];
 }
 const {listTitle, listItems} = Astro.props
@@ -14,11 +16,26 @@ const {listTitle, listItems} = Astro.props
 		<div class='space-y-6'>
 			{
 				listItems.map(item => (
-					<div class='p-6 rounded-lg text-base-content bg-base-200'>
-						<h3 class='text-xl font-semibold mb-2'>{item.title}</h3>
-						<p >
-							{item.journal} • {item.time}
-						</p>
+					<div class='flex flex-row p-6 justify-between rounded-lg bg-base-200'>
+						<div class='text-base-content'>
+							<a
+								href={item.link as string}
+								class='block hover:text-accent transition-colors duration-200'
+								target='_blank'
+							>
+								<h3 class='text-xl font-semibold mb-2'>{item.title}</h3>
+							</a>
+							<p>
+								{item.journal} • {item.time}
+							</p>
+						</div>
+						<a
+							href={item.link as string}
+							class='block hover:text-accent transition-colors duration-200'
+							target='_blank'
+						>
+							<img class="h-48 object-contain rounded-lg shadow-lg" src={item.thumbnail}>
+						</a>
 					</div>
 				))
 			}

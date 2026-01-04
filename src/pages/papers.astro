@@ -1,13 +1,15 @@
 ---
+import { profile } from '@/settings'
 import Layout from "@/layouts/Layout.astro";
 import { publications } from "@/data/cv";
 import { highlightAuthor } from "@/lib/utils";
 import {template} from "@/settings";
 
 const ALL_PAPERS = publications; // This will be replaced with dynamic data later
+const { fullName } = profile
 ---
 
-<Layout title="Papers">
+<Layout title=`Projects | ${fullName}`>
   <div class="prose max-w-none">
     <h1 class="text-3xl font-bold mb-8">Projects and Papers</h1>
 
@@ -40,7 +42,7 @@ const ALL_PAPERS = publications; // This will be replaced with dynamic data late
       }
     </div>
 
-    <div class="flex justify-center mt-8">
+    <!-- <div class="flex justify-center mt-8">
       <div class="join">
         <button class="join-item btn btn-sm">«</button>
         <button class="join-item btn btn-sm">1</button>
@@ -48,6 +50,6 @@ const ALL_PAPERS = publications; // This will be replaced with dynamic data late
         <button class="join-item btn btn-sm">3</button>
         <button class="join-item btn btn-sm">»</button>
       </div>
-    </div>
+    </div> -->
   </div>
 </Layout>

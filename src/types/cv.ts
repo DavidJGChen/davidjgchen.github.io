@@ -25,6 +25,7 @@ export interface Publication {
   journal: string;
   time: string;
   link?: string;
+  thumbnail?: string;
   abstract?: string;
 }
 

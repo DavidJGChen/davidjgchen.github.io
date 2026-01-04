@@ -104,5 +104,3 @@ Once you have added the new blog post, it will be automatically included in the 
 
 ## Deploy
 The template provides a workflow to deploy the website on Github pages as a static website.
-
-(test README change)

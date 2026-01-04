@@ -4,7 +4,7 @@ export const profile = {
 	institute: 'Stanford University',
 	author_name: '', // Author name to be highlighted in the papers section
 	research_areas: [
-		{ title: 'Reinforcement Learning', description: 'Multi-armed bandits, offline RL, etc.', field: 'computer-science' },
+		{ title: 'Reinforcement Learning', description: 'Multi-armed bandits, offline RL, etc.', field: 'engineering' },
 		{ title: 'Mathematical Statistics', description: 'Currently taking a subset of the Stats PhD sequence.', field: 'mathematics' },
 	],
 }
@@ -35,7 +35,7 @@ export const template = {
 }
 
 export const seo = {
-	default_title: 'David Chen | MS in Computer Science: Artificial Intelligence at Stanford University',
+	default_title: 'David Chen | MSCS',
 	default_description: 'David Chen is a Master\'s student in Computer Science at Stanford University, studying artificial intelligence and statistics. He is especially interested in machine learning theory, and is currently learning more about statistics, decision-making under uncertainty, and combinatorial optimization.',
 	default_image: '/images/astro-academia.png',
 }

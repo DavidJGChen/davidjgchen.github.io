@@ -67,6 +67,7 @@ export const publications = [
 		journal: 'CS 221',
 		time: '2025',
 		link: 'bandits.pdf',
+		thumbnail: 'bandits.png',
 		abstract: 'This project evaluates classic and modern stochastic multi-armed bandit algorithms by comparing their theoretical regret bounds against empirical performance and runtime. I developed a simulation framework to test strategies such as ϵ-greedy, Thompson sampling, and information-directed sampling across independent and linear bandit settings. This comprehensive analysis aims to provide both quantitative benchmarks and qualitative insights into how different exploration-exploitation strategies behave in practice.',
 	},
 	{
@@ -75,6 +76,7 @@ export const publications = [
 		journal: 'CS 234',
 		time: '2024',
 		link: 'stitching-paper.pdf',
+		thumbnail: 'stitching.png',
 		abstract: 'This paper benchmarks the ability of Transformer-based reinforcement learning methods to "stitch" suboptimal trajectories into optimal policies across challenging AntMaze environments. We introduce an enhanced Waypoint Transformer with a refined waypoint selection strategy that improves performance. These contributions provide a comprehensive evaluation of current sequence modeling approaches and suggest new avenues for goal-conditioned behavior cloning.',
 	},
 ];

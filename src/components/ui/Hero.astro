@@ -8,13 +8,16 @@ const {fullName, title, institute, profilePicture} = Astro.props
 ---
 <div class='flex-1'>
   <h1 class='text-4xl font-bold mb-4'>
-    Welcome! I'm <span class='text-secondary'>{fullName}</span>
+    Just another <span class='text-secondary'>{fullName}</span>
   </h1>
   <p class='text-xl text-gray-600 mb-4'>{title}{institute ? ` at ${institute}` : ''}</p>
   <p class='text-lg mb-6'>
-    Welcome to my website!
+    Welcome to my website! I am one of many "{fullName}"s...
     <br>
-    <b>Currently:</b> First year MSCS: Artificial Intelligence at Stanford.
+    Fun fact, I've always wanted to change my name! 
+  </p>
+  <p class='text-lg mb-6'>
+    <b>Currently:</b> 1st year MSCS: Artificial Intelligence @ Stanford.
     <br>
     <b>Previously:</b> SWE @ Meta on FB (notifications, birthdays, feed, comments).
     <br>

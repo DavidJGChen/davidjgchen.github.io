@@ -2,13 +2,12 @@
 import Layout from "@/layouts/Layout.astro";
 import { profile } from "@/settings";
 import BetterIcon from "@/components/ui/BetterIcon.astro";
-import List from "@/components/ui/List.astro";
 import {RESEARCH_ICONS} from "@/data/researchIcons";
 
-const { research_areas } = profile;
+const { fullName, research_areas } = profile;
 ---
 
-<Layout title="Research | David Chen">
+<Layout title=`Interests | ${fullName}`>
   <div class="prose max-w-none">
     <h1 class="text-3xl font-bold mb-8">My Interests</h1>
 
@@ -42,7 +41,7 @@ const { research_areas } = profile;
               </svg>
             </BetterIcon>
             <div>
-              <h3 class="text-xl font-semibold mb-2">{area.title}</h3>
+              <h3 class="text-xl font-semibold mb-2 inline">{area.title}</h3>
               <p class="text-base">{area.description}</p>
             </div>
           </div>

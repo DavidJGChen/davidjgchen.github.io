@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets'
-import {profile} from '../../settings'
+import {social, profile} from '@/settings'
 import SocialIcons from './SocialIcons.astro'
 import David from '@/assets/david.jpg'
 import ProfilePictures from '@/assets/profile_pictures.jpg'
@@ -22,7 +22,7 @@ const {fullName} = profile
 					src={David}
 					alt={`Profile picture of ${fullName}`}
 				/>
-				<h1 class="text-lg font-black mt-8 hidden lg:block">{fullName}</span></h1>
+				<h1 class="text-lg font-black mt-8 hidden lg:block">{social.email}</span></h1>
 			</div>
 			<div class='mx-4 mt-16'>
 				<ul class='space-y-4 menu grow shrink menu-md overflow-y-auto'>
